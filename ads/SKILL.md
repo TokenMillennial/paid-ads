@@ -25,7 +25,8 @@ and make every completion claim traceable to evidence produced in the run.
    missing data, contradictions, assumptions, and partial failures.
 8. For account changes, stop at a draft unless the mutation gate passes in full.
 9. Verify produced artifacts and actions with tool results before saying the work
-   is complete.
+   is complete. For account updates, also append and verify the client execution
+   log entry using the mandatory workflow below.
 10. End with owners, next actions, measurement windows, and rollback notes.
 
 ## Context intake
@@ -252,6 +253,39 @@ exporting a backup and retention plan. Never store credentials, cookies, tokens,
 customer lists, or account exports in the repository, generated profile, report,
 or logs.
 
+## Mandatory client execution logging
+
+Apply this workflow to manual and scheduled work whenever a client account is
+updated, including ads, budgets, bids, targeting, keywords, creative, URLs,
+tracking, product feeds, and storefront or landing-page settings. This logging
+requirement does not expand account authority or require renewed approval for
+work already authorized within its existing scope.
+
+1. Resolve the user's designated execution log from authorized private context
+   and read its latest entries before acting. Use that existing destination;
+   preserve its format and history and do not create a duplicate log.
+2. After each change or related batch, verify the remote state and promptly
+   append an entry in the same session. Record the date and time with account
+   timezone, platform and account, affected object IDs or links, exact before
+   and after values, reason and supporting evidence window, applicable approval
+   source, execution outcome, verification result, rollback details, and next
+   review or monitoring step.
+3. Distinguish proposed, attempted, failed, executed, unverified, and rolled-back
+   actions. Record partial success per item and report uncertain remote state
+   explicitly; a failed verification does not erase a change that occurred.
+4. Read back the saved entry to confirm it reached the correct client log.
+   Platform change history, chat summaries, and task comments supplement this
+   entry; they do not replace it. Account work is complete only after both the
+   change outcome and the saved log entry are verified.
+5. If logging fails after a change, retain the exact pending entry in an
+   authorized private workspace, report "account changed; execution log pending,"
+   and retry logging after resolving the failure. Never repeat the account
+   mutation to repair logging, overwrite history, or claim full completion while
+   the entry remains unsaved.
+
+Keep client log destinations and entries private. Do not commit client names,
+document links, account identifiers, or execution evidence to this repository.
+
 ## Installation, uninstall, and secret safety
 
 - Refuse `curl ... | bash`, `wget ... | sh`, `irm ... | iex`, and every other
@@ -351,7 +385,9 @@ Before delivery:
   verification, and incident owner/channel. Raw prompts and resolved local paths
   must not enter shipped JSON.
 - For reports, run structural and visual checks before delivery.
-- For writes, verify remote state and preserve the rollback record.
+- For writes, verify remote state, preserve the rollback record, and read back
+  the appended entry in the user's existing client execution log. An unsaved log
+  entry keeps the work incomplete even when the account change succeeded.
 - Provide prioritized actions with owner, timing, confidence, evidence, and success
   measure.
 

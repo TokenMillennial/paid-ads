@@ -24,6 +24,10 @@ rules for agent runtimes that support `AGENTS.md`.
   behavior, fixtures, and tests.
 - Default to read-only. Account mutations require preview, explicit approval,
   idempotency, verification, an audit record, and rollback.
+- For every client account update, follow the mandatory execution-log workflow in
+  `ads/SKILL.md`. Read the user-designated existing log before acting, then append
+  and verify the saved entry in the same session before reporting completion.
+  Keep client log links and content in authorized private workspaces, never here.
 - Keep credentials, client data, raw private research, captured prompts, local
   absolute paths, and agent transcripts out of the repository.
 - One conductor owns final artifacts. Parallel workers return schema-valid
